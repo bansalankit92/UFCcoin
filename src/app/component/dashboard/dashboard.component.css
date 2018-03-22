@@ -1,0 +1,11 @@
+.token-header{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.token-header h2, p{
+    color: white;
+}
