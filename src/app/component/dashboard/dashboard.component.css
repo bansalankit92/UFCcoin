@@ -6,6 +6,46 @@
     text-align: center;
 }
 
-.token-header h2, p{
+.token-header h2, 
+.token-header p{
     color: white;
+}
+
+.roadmap-container{
+    margin: 20px 50px;
+}
+
+.roadmap-content{
+    padding: 8px 0 28px 30px;
+    margin: 10px 0 0 8px;
+    font-size: 15px;
+    border-left: 2px solid rgba(35,35,35,0.25);
+}
+
+.roadmap-title-content{
+    padding-left: 20px;
+}
+
+.roadmap-title{
+   // padding-left: 42px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.roadmap-icon{
+    color:#3bd3be;
+    top: 3px;
+    font-size: 22px;
+}
+
+.social-icon{
+    padding: 10px 15px;
+}
+
+.member-image{
+margin: 15px 0;
+}
+
+.member-content{
+  margin : 10px;
 }

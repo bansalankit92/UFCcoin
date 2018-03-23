@@ -29,8 +29,6 @@ export class TokenService {
 
   constructor(private utilService: UtilService) { }
 
-
-
 	public get accountAddress(): string {
 		return this.$accountAddress;
 	}
@@ -41,9 +39,7 @@ export class TokenService {
   
   public set accountPassword(value: string) {
 		this.$accountPassword = value;
-	}
-
-  
+	}  
 
   private initializeWeb3() {
     if (typeof window['web3'] !== 'undefined' && typeof window['Web3'] !== 'undefined') {
