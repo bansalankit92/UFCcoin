@@ -1,11 +1,14 @@
+import {RequestOptions, Http, URLSearchParams} from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Constants } from 'app/model/constants';
- import { default as Web3} from 'web3';
-import { Campaign } from 'app/model/Campaign';
+import { default as Web3} from 'web3';
+import { Giveaway } from 'app/model/giveaway';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/bindCallback';
 import "rxjs/add/observable/of";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/catch";
 
 import { UtilService } from './util.service'
 import { Subscriber } from 'rxjs/Subscriber';
@@ -20,14 +23,13 @@ export class TokenService {
   private unlockedAccount: string; // Current unlocked account
 
   private ABI = Constants.CONTRACT;
-  campaign: Campaign = new Campaign();
-  campaigns: Campaign[] = [];
+
   isWeb3Available = false;
   web3;
   private $accountAddress;
   private $accountPassword;
 
-  constructor(private utilService: UtilService) { }
+  constructor(private utilService: UtilService, private http: Http) { }
 
 	public get accountAddress(): string {
 		return this.$accountAddress;
@@ -122,62 +124,6 @@ export class TokenService {
   }
   }
 
-  addNewCampaign(campaign: Campaign): Observable < any > {
-    /**
-     * 
-     * @get transaction receipt
-     */
-    console.log('add new ', campaign);
-    this.initialize();
-    return new Observable < any > ((observer) => {
-      if (this.isWeb3Available) {
-        this.unlockAccount().subscribe(account => {
-          console.log(account);
-        this.web3Instance.newCampaign(campaign.beneficiary, campaign.fundingGoal,
-          campaign.deadline, campaign.detailsUrl, campaign.category,{
-            from: account,
-            gas: Constants.GAS_NEW_CAMPAIGN
-          },
-          (err, res) => this.handleCallback(err, res, observer));
-        }, err => this.OnError(err, observer));
-      } else {
-        this.unlockAccount().subscribe(res => {
-          console.log(res);
-          if (res) {
-          // this.web3Instance.methods.newCampaign(this.campaign.beneficiary, this.campaign.fundingGoal,
-          //     this.campaign.deadline, this.campaign.detailsUrl, this.campaign.category).send({
-          //     from: this.$accountAddress,
-          //     gas: Constants.GAS_NEW_CAMPAIGN
-          //   }, (err, res1) => this.handleCallback(err, res1, observer));
-          this.web3Instance.methods.newCampaign(campaign.beneficiary, campaign.fundingGoal,
-                campaign.deadline, campaign.detailsUrl, campaign.category).send({
-                from: this.$accountAddress,
-                gas: Constants.GAS_NEW_CAMPAIGN
-              })
-          .on('transactionHash', function (hash) {
-            console.log("hash ", hash);
-          observer.next(hash);
-          observer.complete();
-          })
-          .on('receipt', function (receipt) {
-            console.log("receipt ", receipt);
-           // observer.next(receipt);
-          })
-          .on('confirmation', function (confirmationNumber, receipt) {
-            console.log("confirmation no ", confirmationNumber);
-            console.log("receipt ", receipt);
-          })
-          .on('error', function(error){
-            observer.error(error);
-          });
-          } else {
-            this.OnError('Please enter correct account address and password', observer)
-          }
-        }, err => this.OnError(err, observer));
-      }
-    });
-  }
-
   private OnError(err, observer?: Subscriber < any >) {
     if (observer) {
       observer.error(err);
@@ -201,6 +147,42 @@ export class TokenService {
         });
       } else {
         this.web3Instance.methods.balanceOf(address).call((err, res) => this.handleCallback(err, res, observer));
+      }
+    });
+  }
+
+  buyPrice(address: string): Observable < any > {
+    this.initialize();
+    return new Observable < any > ((observer) => {
+      if (this.isWeb3Available) {
+        this.web3Instance.buyPrice( (err, res) => {
+          if(err){
+            this.handleCallback(err, res, observer)
+          }else{
+            observer.next(res.toNumber());
+            observer.complete();
+          }
+        });
+      } else {
+        this.web3Instance.methods.buyPrice().call((err, res) => this.handleCallback(err, res, observer));
+      }
+    });
+  }
+
+  sellPrice(address: string): Observable < any > {
+    this.initialize();
+    return new Observable < any > ((observer) => {
+      if (this.isWeb3Available) {
+        this.web3Instance.sellPrice( (err, res) => {
+          if(err){
+            this.handleCallback(err, res, observer)
+          }else{
+            observer.next(res.toNumber());
+            observer.complete();
+          }
+        });
+      } else {
+        this.web3Instance.methods.sellPrice().call((err, res) => this.handleCallback(err, res, observer));
       }
     });
   }
@@ -230,6 +212,7 @@ export class TokenService {
      * 
      * @get transaction receipt
      */
+    coins = coins * Constants.COIN_DECIMAL_PLACE;
     this.initialize();
     return new Observable < any > ((observer) => {
       if (this.isWeb3Available) {
@@ -260,5 +243,120 @@ export class TokenService {
     });
   }
 
+
+
+  
+
+  buy( ether: number): Observable < any > {
+    /**
+     * 
+     * @get transaction receipt
+     */
+    ether = ether * Constants.ETHER_DECIMAL_PLACE;
+    this.initialize();
+    return new Observable < any > ((observer) => {
+      if (this.isWeb3Available) {
+
+        this.unlockAccount().subscribe(account => {
+          console.log(account);
+          this.web3Instance.buy( {
+              from: account,
+              gas: Constants.GAS_CONTRIBUTE,
+              value: ether
+            },
+            (err, res) => this.handleCallback(err, res, observer));
+          }, err => this.OnError(err, observer));
+      } else {
+        this.unlockAccount().subscribe(res => {
+          console.log(res);
+          if (res) {
+            console.log(this.web3Instance.methods);
+            this.web3Instance.methods.contribute().send({
+                from: this.$accountAddress,
+                gas: Constants.GAS_WITHDRAW,
+                value: ether
+              }, (err, res1) => this.handleCallback(err, res1, observer));
+
+          } else {
+            this.OnError('Please enter correct account address and password', observer)
+          }
+        }, err => this.OnError(err, observer));
+      }
+    });
+  }
+
+
+
+
+  sell(  coins: number): Observable < any > {
+    /**
+     * 
+     * @get transaction receipt
+     */
+    coins = coins * Constants.COIN_DECIMAL_PLACE;
+    this.initialize();
+    return new Observable < any > ((observer) => {
+      if (this.isWeb3Available) {
+
+        this.unlockAccount().subscribe(account => {
+          console.log(account);
+          this.web3Instance.sell(coins, {
+              from: account,
+              gas: Constants.GAS_CONTRIBUTE
+            },
+            (err, res) => this.handleCallback(err, res, observer));
+          }, err => this.OnError(err, observer));
+      } else {
+        this.unlockAccount().subscribe(res => {
+          console.log(res);
+          if (res) {
+            console.log(this.web3Instance.methods);
+            this.web3Instance.methods.sell( coins).send({
+                from: this.$accountAddress,
+                gas: Constants.GAS_WITHDRAW
+              }, (err, res1) => this.handleCallback(err, res1, observer));
+
+          } else {
+            this.OnError('Please enter correct account address and password', observer)
+          }
+        }, err => this.OnError(err, observer));
+      }
+    });
+  }
+
+
+  addToSheet(giveaway: Giveaway):Observable<any> {
+    let headers = new Headers({ });
+      let request_data = new URLSearchParams();
+      
+      request_data.set('name', giveaway.name);
+      request_data.set('email_id', giveaway.email_id);
+      request_data.set('ether_address', giveaway.ether_address);
+      request_data.set('no_of_coins', String(giveaway.no_of_coins));
+      request_data.set('discount_code', giveaway.discount_code);
+      request_data.set('referral_id', giveaway.referral_id);
+      request_data.set('giveaway_id', giveaway.giveaway_id);
+      let request_option = new RequestOptions({});
+      request_option.params = request_data;
+      return this.http.get(Constants.FORM_DATA_STORE, request_option).map(response => {
+        const contentType = response.headers.get('Content-type');
+       if (contentType === 'application/json') {
+        return response.json();
+       } else {
+        return response.text();
+       }
+    })  .catch(this.handleError);
+
+
+
+  }
+  private handleError(error: any) {
+    // In a real world app, we might use a remote logging infrastructure
+    // We'd also dig deeper into the error to get a better message
+    let errMsg = (error.message) ? error.message :
+    error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+         console.error(errMsg); // log to console instead
+         return Observable.throw(errMsg);
+  }
 
 }

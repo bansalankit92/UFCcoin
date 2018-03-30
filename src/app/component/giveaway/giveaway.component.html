@@ -1,0 +1,165 @@
+<div class="cd-pricing-container cd-has-margins">
+
+  <ul class="cd-pricing-list">
+    <li>
+      <header class="cd-pricing-header">
+        <h2>Basic</h2>
+
+        <div class="cd-price">
+          <span class="cd-currency">$</span>
+          <span class="cd-value">30</span>
+          <span class="cd-duration">mo</span>
+        </div>
+      </header>
+      <!-- .cd-pricing-header -->
+
+      <div class="cd-pricing-body">
+        <ul class="cd-pricing-features">
+          <li>
+            <em>256MB</em> Memory</li>
+          <li>
+            <em>1</em> User</li>
+          <li>
+            <em>1</em> Website</li>
+          <li>
+            <em>1</em> Domain</li>
+          <li>
+            <em>Unlimited</em> Bandwidth</li>
+          <li>
+            <em>24/7</em> Support</li>
+        </ul>
+      </div>
+      <!-- .cd-pricing-body -->
+
+      <footer class="cd-pricing-footer">
+        <a class="cd-select" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false"
+         aria-controls="giveawayContact"  (click)="select('1')">Select</a>
+      </footer>
+      <!-- .cd-pricing-footer -->
+    </li>
+    <li class="cd-popular">
+      <header class="cd-pricing-header">
+        <h2>Popular</h2>
+
+        <div class="cd-price">
+          <span class="cd-currency">$</span>
+          <span class="cd-value">60</span>
+          <span class="cd-duration">mo</span>
+        </div>
+      </header>
+      <!-- .cd-pricing-header -->
+
+      <div class="cd-pricing-body">
+        <ul class="cd-pricing-features">
+          <li>
+            <em>512MB</em> Memory</li>
+          <li>
+            <em>3</em> Users</li>
+          <li>
+            <em>5</em> Websites</li>
+          <li>
+            <em>7</em> Domains</li>
+          <li>
+            <em>Unlimited</em> Bandwidth</li>
+          <li>
+            <em>24/7</em> Support</li>
+        </ul>
+      </div>
+      <!-- .cd-pricing-body -->
+
+      <footer class="cd-pricing-footer">
+        <a class="cd-select" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" 
+        aria-controls="giveawayContact"  (click)="select('2')">Select</a>
+      </footer>
+      <!-- .cd-pricing-footer -->
+    </li>
+    <li>
+      <header class="cd-pricing-header">
+        <h2>Premier</h2>
+
+        <div class="cd-price">
+          <span class="cd-currency">$</span>
+          <span class="cd-value">90</span>
+          <span class="cd-duration">mo</span>
+        </div>
+      </header>
+      <!-- .cd-pricing-header -->
+
+      <div class="cd-pricing-body">
+        <ul class="cd-pricing-features">
+          <li>
+            <em>1024MB</em> Memory</li>
+          <li>
+            <em>5</em> Users</li>
+          <li>
+            <em>10</em> Websites</li>
+          <li>
+            <em>10</em> Domains</li>
+          <li>
+            <em>Unlimited</em> Bandwidth</li>
+          <li>
+            <em>24/7</em> Support</li>
+        </ul>
+      </div>
+      <!-- .cd-pricing-body -->
+
+      <footer class="cd-pricing-footer">
+        <a class="cd-select" data-toggle="collapse" href="#giveawayContact" role="button" 
+          aria-expanded="false" aria-controls="giveawayContact" 
+          (click)="select('3')">Select</a>
+      </footer>
+      <!-- .cd-pricing-footer -->
+    </li>
+  </ul>
+  <!-- .cd-pricing-list -->
+</div>
+<!-- .cd-pricing-container -->
+
+<div class="collapse container" id="giveawayContact">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-8">
+      <div class="card card-body">
+        <form>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control-plaintext" [(ngModel)]="giveawayToken.name" name="giveawayToken.name" id="giveawayToken.name"
+                placeholder="Elon Musk">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control-plaintext" [(ngModel)]="giveawayToken.email_id" name="giveawayToken.email_id" id="giveawayToken.email_id"
+                placeholder="elonmusk@ceo.com">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-3 col-form-label">Ethereum Public Address</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control-plaintext" [(ngModel)]="giveawayToken.ether_address" name="giveawayToken.ether_address"
+                id="giveawayToken.ether_address" placeholder="0x1813d474454CBB0374f4e44050f63eeA0B50dD4d">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-3 col-form-label">UFC coins</label>
+            <div class="col-sm-9">
+              {{giveawayToken.no_of_coins}} <span *ngIf="giveawayToken.referral_id"> + 50</span>
+              
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-3 col-form-label">Referral Code</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control-plaintext" [(ngModel)]="giveawayToken.referral_id" name="giveawayToken.referral_id"
+                id="giveawayToken.referral_id" placeholder="friends@emailid.com">
+            </div>
+          </div>
+          
+          <button type="submit" (click)="giveaway()" class="btn btn-danger">Giveaway</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

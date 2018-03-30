@@ -40,3 +40,55 @@ angel investor
 
 
 http://demo.themovation.com/pursuit/home-ico-2/
+/*****/
+create balance of and transfer section
+create buy and sell section
+
+
+create giveaway section
+How it works section/get account
+
+token details
+
+create footer
+add quotes
+add navigtaion
+add smooth scroll
+add css
+do alignment
+
+how to install metamask
+
+
+/******/
+
+
+send email from ui - create backend or check some ui
+share with fb twitter
+
+
+create paypal account
+get paytm mobile no.
+
+google analytics
+fb id
+twitter id
+delete tweets
+add meta 
+
+
+//done
+upload to firebase
+
+get domain
+create eth account and add cex private key eth
+publish coin 
+goole sheets to custom form integration
+
+
+
+
+/***/
+
+https://script.google.com/macros/s/AKfycbxFMRyVoKf-xX6zB2xdnDlOUyXbNyqqnGCWCxBjVrnNrkJyaCBM/exec
+

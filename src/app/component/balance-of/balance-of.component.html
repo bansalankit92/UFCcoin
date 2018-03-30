@@ -1,3 +1,12 @@
-<p>
-  balance-of works!
-</p>
+<form >
+  <div class="row">
+    <div class="col-md-6">
+      <input type="text" class="form-control" name="accountAddress" [(ngModel)]="accountAddress" placeholder="Ether public account address">
+    </div>
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-info" (click)="search()">Search</button>
+    </div>
+  </div>
+</form>
+<div *ngIf="balance > 0"><span> You have {{balance/1000000000000000000}} UFC coins <i class="fa fa-smile-o"></i></span></div>
+<div *ngIf="balance < 0"><span>Get UFC coins </span></div>

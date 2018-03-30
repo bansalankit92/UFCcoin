@@ -249,5 +249,33 @@ Boid.prototype.cohesion = function(boids) {
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
 
-
+<script>
+  jQuery(document).ready(function($){
+    //hide the subtle gradient layer (.cd-pricing-list > li::after) when pricing table has been scrolled to the end (mobile version only)
+    checkScrolling($('.cd-pricing-body'));
+    $(window).on('resize', function(){
+      window.requestAnimationFrame(function(){checkScrolling($('.cd-pricing-body'))});
+    });
+    $('.cd-pricing-body').on('scroll', function(){ 
+      var selected = $(this);
+      window.requestAnimationFrame(function(){checkScrolling(selected)});
+    });
+  
+    function checkScrolling(tables){
+      tables.each(function(){
+        var table= $(this),
+          totalTableWidth = parseInt(table.children('.cd-pricing-features').width()),
+           tableViewport = parseInt(table.width());
+         console.log(table.scrollLeft() - totalTableWidth + tableViewport)
+        if( table.scrollLeft() >= totalTableWidth - tableViewport - 1) {
+          table.parent('li').addClass('is-ended');
+        } else {
+          table.parent('li').removeClass('is-ended');
+        }
+      });
+    }
+  });
+  
+  </script>

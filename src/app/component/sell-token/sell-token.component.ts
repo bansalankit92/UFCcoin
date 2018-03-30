@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from 'app/service/token.service';
 import { Constants } from 'app/model/constants';
+import { TokenService } from 'app/service/token.service';
 
 @Component({
-  selector: 'app-transfer',
-  templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.css']
+  selector: 'app-sell-token',
+  templateUrl: './sell-token.component.html',
+  styleUrls: ['./sell-token.component.css']
 })
-export class TransferComponent implements OnInit {
+export class SellTokenComponent implements OnInit {
 
   transactionId;
   accountAddress;
@@ -20,8 +20,8 @@ export class TransferComponent implements OnInit {
   ngOnInit() {
   }
 
-  transfer() {
-    this.tokenService.transfer(this.accountAddress, this.noOfCoins).subscribe(res => {
+  sell() {
+    this.tokenService.sell( this.noOfCoins).subscribe(res => {
      console.log(res);
      this.transactionId = res;
      this.etherscanUrl  = Constants.ETHERSCAN_URL + res;
@@ -31,5 +31,4 @@ export class TransferComponent implements OnInit {
    });
   }
 
-  
 }

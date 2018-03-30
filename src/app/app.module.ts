@@ -12,6 +12,11 @@ import { SignInComponent } from './component/sign-in/sign-in.component';
 import { TokenService } from 'app/service/token.service';
 import { BalanceOfComponent } from './component/balance-of/balance-of.component';
 import { TransferComponent } from './component/transfer/transfer.component';
+import { BuyTokenComponent } from './component/buy-token/buy-token.component';
+import { SellTokenComponent } from './component/sell-token/sell-token.component';
+import { GiveawayComponent } from './component/giveaway/giveaway.component';
+import { HttpModule } from '@angular/http';
+import { InvestorComponent } from './component/investor/investor.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +26,17 @@ import { TransferComponent } from './component/transfer/transfer.component';
     TeamComponent,
     SignInComponent,
     BalanceOfComponent,
-    TransferComponent
+    TransferComponent,
+    BuyTokenComponent,
+    SellTokenComponent,
+    GiveawayComponent,
+    InvestorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRouting
+    AppRouting,
+    HttpModule
   ],
   providers: [TokenService, UtilService],
   bootstrap: [AppComponent]

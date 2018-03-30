@@ -17,6 +17,14 @@ export class Constants {
 
   public static ACCOUNT_ADDRESS = '0x0206fC3499F305B41160b0cbC3b18B57301BBe79';
   public static ACCOUNT_PASSWORD = 'Ether123#';
+
+  public static ETHERSCAN_URL= 'https://rinkeby.etherscan.io/tx/';
+
+  public static ETHER_DECIMAL_PLACE = 1000000000000000000;
+  public static COIN_DECIMAL_PLACE = 1000000000000000000; // 100000000000
+
+  public static FORM_DATA_STORE = 'https://script.google.com/macros/s/AKfycbxFMRyVoKf-xX6zB2xdnDlOUyXbNyqqnGCWCxBjVrnNrkJyaCBM/exec';
+
 }
 
 
