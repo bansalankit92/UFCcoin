@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "ufccoin",
+=======
+  "name": "unitechain",
+>>>>>>> 9a2ef10a606aacd1d939b333b87d03c402a2f282
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {

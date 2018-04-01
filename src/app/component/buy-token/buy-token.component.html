@@ -1,0 +1,22 @@
+To transfer coins you Will need Metamask chrome addon. Download from here
+<a href="https://metamask.io/">https://metamask.io/</a>
+
+<form>
+  <div class="row">
+    
+    <div class="col-md-5">
+      <input type="number" class="form-control" name="noOfCoins" [(ngModel)]="noOfCoins" placeholder="Number of coins to buy from Ether"
+        required>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-info" (click)="buy()">Buy</button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="transactionId">
+  <span> Your Transaction id is
+    <a [href]="etherscanUrl" target="_blank">{{transactionId}} </a>
+    <i class="fa fa-smile-o"></i>
+  </span>
+</div>
