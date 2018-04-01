@@ -23,13 +23,17 @@ export class GiveawayComponent implements OnInit {
     console.log(this.giveawayToken);
     if(this.validate(this.giveawayToken)){
 
+    
+      this.tokenService.addToSheet(this.giveawayToken).subscribe(res=>{
+        console.log(res)
+        if(res.success){
+            this.isSuccess = true;
+        }
+      },err=>{
+        console.log(err)
+      });
+
     }
-    // this.tokenService.addToSheet(this.giveawayToken).subscribe(res=>{
-    //   console.log(res)
-    //   if(res.success){
-    //       this.isSuccess = true;
-    //   }
-    // });
   }
 
   select(id){
@@ -52,22 +56,16 @@ export class GiveawayComponent implements OnInit {
     }
     if(!giveaway1.discount_code){
       giveaway1.discount_code = 'NA';
-      return false;
     }
     if(!giveaway1.referral_id){
       giveaway1.referral_id = 'NA';
-      return false;
     }
     if(!giveaway1.giveaway_id){
       giveaway1.giveaway_id = '1';
-
-      return false;
     }
     if(!giveaway1.no_of_coins){
       giveaway1.no_of_coins = 100;
-      return false;
     }
-
     return true;
   }
 

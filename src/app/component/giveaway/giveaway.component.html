@@ -1,125 +1,74 @@
-<div class="cd-pricing-container cd-has-margins">
+<!--  https://murhafsousli.github.io/ngx-sharebuttons/#/share-button-component   -->
+<div class="container text-center">
+  <h2> Coin Giveaway</h2>
 
-  <ul class="cd-pricing-list">
-    <li>
-      <header class="cd-pricing-header">
-        <h2>Basic</h2>
-
-        <div class="cd-price">
-          <span class="cd-currency">$</span>
-          <span class="cd-value">30</span>
-          <span class="cd-duration">mo</span>
-        </div>
-      </header>
-      <!-- .cd-pricing-header -->
-
-      <div class="cd-pricing-body">
-        <ul class="cd-pricing-features">
-          <li>
-            <em>256MB</em> Memory</li>
-          <li>
-            <em>1</em> User</li>
-          <li>
-            <em>1</em> Website</li>
-          <li>
-            <em>1</em> Domain</li>
-          <li>
-            <em>Unlimited</em> Bandwidth</li>
-          <li>
-            <em>24/7</em> Support</li>
-        </ul>
-      </div>
-      <!-- .cd-pricing-body -->
-
-      <footer class="cd-pricing-footer">
-        <a class="cd-select" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false"
-         aria-controls="giveawayContact"  (click)="select('1')">Select</a>
-      </footer>
-      <!-- .cd-pricing-footer -->
-    </li>
-    <li class="cd-popular">
-      <header class="cd-pricing-header">
-        <h2>Popular</h2>
-
-        <div class="cd-price">
-          <span class="cd-currency">$</span>
-          <span class="cd-value">60</span>
-          <span class="cd-duration">mo</span>
-        </div>
-      </header>
-      <!-- .cd-pricing-header -->
-
-      <div class="cd-pricing-body">
-        <ul class="cd-pricing-features">
-          <li>
-            <em>512MB</em> Memory</li>
-          <li>
-            <em>3</em> Users</li>
-          <li>
-            <em>5</em> Websites</li>
-          <li>
-            <em>7</em> Domains</li>
-          <li>
-            <em>Unlimited</em> Bandwidth</li>
-          <li>
-            <em>24/7</em> Support</li>
-        </ul>
-      </div>
-      <!-- .cd-pricing-body -->
-
-      <footer class="cd-pricing-footer">
-        <a class="cd-select" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" 
-        aria-controls="giveawayContact"  (click)="select('2')">Select</a>
-      </footer>
-      <!-- .cd-pricing-footer -->
-    </li>
-    <li>
-      <header class="cd-pricing-header">
-        <h2>Premier</h2>
-
-        <div class="cd-price">
-          <span class="cd-currency">$</span>
-          <span class="cd-value">90</span>
-          <span class="cd-duration">mo</span>
-        </div>
-      </header>
-      <!-- .cd-pricing-header -->
-
-      <div class="cd-pricing-body">
-        <ul class="cd-pricing-features">
-          <li>
-            <em>1024MB</em> Memory</li>
-          <li>
-            <em>5</em> Users</li>
-          <li>
-            <em>10</em> Websites</li>
-          <li>
-            <em>10</em> Domains</li>
-          <li>
-            <em>Unlimited</em> Bandwidth</li>
-          <li>
-            <em>24/7</em> Support</li>
-        </ul>
-      </div>
-      <!-- .cd-pricing-body -->
-
-      <footer class="cd-pricing-footer">
-        <a class="cd-select" data-toggle="collapse" href="#giveawayContact" role="button" 
-          aria-expanded="false" aria-controls="giveawayContact" 
-          (click)="select('3')">Select</a>
-      </footer>
-      <!-- .cd-pricing-footer -->
-    </li>
-  </ul>
-  <!-- .cd-pricing-list -->
+  <a class="btn btn-outline-info" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" aria-controls="giveawayContact"
+    (click)="select('1')">Get 250 UFC</a>
+  <a class="btn btn-outline-success" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" aria-controls="giveawayContact"
+    (click)="select('2')">Get 650 UFC</a>
+  <a class="btn btn-outline-danger" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" aria-controls="giveawayContact"
+    (click)="select('3')">Get 1150 UFC</a>
 </div>
-<!-- .cd-pricing-container -->
+
 
 <div class="collapse container" id="giveawayContact">
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-8">
+
       <div class="card card-body">
+
+        <div *ngIf="giveawayToken.giveaway_id === '1' || giveawayToken.giveaway_id === '3' ">
+
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-9">
+              Share on
+              <share-button [theme]="'material-dark'" [button]="'facebook'" [showText]="true" [size]="3"></share-button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-9">
+
+              <div> Share on
+                <share-button [theme]="'material-dark'" [button]="'linkedin'" [showText]="true" [size]="3"></share-button> or
+                <share-button [theme]="'material-dark'" [button]="'twitter'" [showText]="true" [size]="3"></share-button>
+              </div>
+              <div >
+                Follow me on <a href="https://www.instagram.com/dude_is_coder/" target="_blank">IG</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="giveawayToken.giveaway_id === '2' || giveawayToken.giveaway_id === '3' ">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-9">
+              <a class="btn btn-outline-dark" data-toggle="collapse" href="#getMeCoffee" role="button"
+               aria-expanded="false" aria-controls="getMeCoffee">
+               Get me a Coffee! <i class="fas fa-coffee"></i>
+              </a>
+              <a> Why?</a>
+
+              <div class="collapse" id="getMeCoffee">
+                <div class="card card-body">
+                 <div class="row">
+                   <div class="col md-6">
+                     Paypal me 5cent
+                   </div>
+                   <div class="col md-6">
+                      or PayTm me Rs.8 at 9762907853
+                    </div>
+                </div>
+                <span>This is not the price of UFC coin. This is the transaction fees I need 
+                  to pay to transfer the coin to you. Below is the UFC coin price. </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <form>
           <div class="form-group row">
             <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
@@ -145,8 +94,9 @@
           <div class="form-group row">
             <label for="staticEmail" class="col-sm-3 col-form-label">UFC coins</label>
             <div class="col-sm-9">
-              {{giveawayToken.no_of_coins}} <span *ngIf="giveawayToken.referral_id"> + 50</span>
-              
+              {{giveawayToken.no_of_coins}}
+              <span *ngIf="giveawayToken.referral_id"> + 50</span>
+
             </div>
           </div>
           <div class="form-group row">
@@ -156,7 +106,6 @@
                 id="giveawayToken.referral_id" placeholder="friends@emailid.com">
             </div>
           </div>
-          
           <button type="submit" (click)="giveaway()" class="btn btn-danger">Giveaway</button>
         </form>
       </div>

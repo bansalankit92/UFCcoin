@@ -328,7 +328,6 @@ export class TokenService {
   addToSheet(giveaway: Giveaway):Observable<any> {
     let headers = new Headers({ });
       let request_data = new URLSearchParams();
-      
       request_data.set('name', giveaway.name);
       request_data.set('email_id', giveaway.email_id);
       request_data.set('ether_address', giveaway.ether_address);
