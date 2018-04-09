@@ -349,6 +349,28 @@ export class TokenService {
 
 
   }
+
+  contactMe(name: string,emailId:string,message:string):Observable<any> {
+    let headers = new Headers({ });
+      let request_data = new URLSearchParams();
+      request_data.set('name', name);
+      request_data.set('email_id', emailId);
+      request_data.set('message', message);
+    
+      let request_option = new RequestOptions({});
+      request_option.params = request_data;
+      return this.http.get(Constants.FORM_CONTACT_ME, request_option).map(response => {
+        const contentType = response.headers.get('Content-type');
+       if (contentType === 'application/json') {
+        return response.json();
+       } else {
+        return response.text();
+       }
+    })  .catch(this.handleError);
+
+  }
+
+
   private handleError(error: any) {
     // In a real world app, we might use a remote logging infrastructure
     // We'd also dig deeper into the error to get a better message

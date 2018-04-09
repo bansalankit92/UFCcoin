@@ -24,7 +24,7 @@ export class Constants {
   public static COIN_DECIMAL_PLACE = 1000000000000000000; // 100000000000
 
   public static FORM_DATA_STORE = 'https://script.google.com/macros/s/AKfycbxFMRyVoKf-xX6zB2xdnDlOUyXbNyqqnGCWCxBjVrnNrkJyaCBM/exec';
-
+  public static FORM_CONTACT_ME = 'https://script.google.com/macros/s/AKfycbwkiCe2Z-9dtActtrmnDgtBRGxhiHzbVxLvm5yvYup2tyJ8tDvo/exec';
 }
 
 

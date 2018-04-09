@@ -22,6 +22,7 @@ import { GiveawayComponent } from './component/giveaway/giveaway.component';
 import { HttpModule } from '@angular/http';
 import { InvestorComponent } from './component/investor/investor.component';
 import { ShareButtonModule } from '@ngx-share/button';
+import { ContactMeComponent } from './component/contact-me/contact-me.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ShareButtonModule } from '@ngx-share/button';
     BuyTokenComponent,
     SellTokenComponent,
     GiveawayComponent,
-    InvestorComponent
+    InvestorComponent,
+    ContactMeComponent
   ],
   imports: [
     BrowserModule,
