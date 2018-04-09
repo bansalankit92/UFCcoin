@@ -2,7 +2,7 @@ To transfer coins you Will need Metamask chrome addon. Download from here
 <a href="https://metamask.io/">https://metamask.io/</a>
 
 <form>
-  <div class="row">
+  <div class="row mt10">
     <div class="col-md-5">
       <input type="text" class="form-control" name="accountAddress" [(ngModel)]="accountAddress" placeholder="Ethereum public account address"
         required>
@@ -17,8 +17,8 @@ To transfer coins you Will need Metamask chrome addon. Download from here
   </div>
 </form>
 
-<div *ngIf="transactionId">
-  <span> Your Transaction id is
+<div *ngIf="transactionId mt10">
+  <span class="ptext"> Your Transaction id is
     <a [href]="etherscanUrl" target="_blank">{{transactionId}} </a>
     <i class="fa fa-smile-o"></i>
   </span>

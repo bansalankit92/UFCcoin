@@ -2,11 +2,11 @@
 <div class="container text-center">
   <h2> Coin Giveaway</h2>
 
-  <a class="btn btn-outline-info" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" aria-controls="giveawayContact"
+  <a class="btn btn-info" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" aria-controls="giveawayContact"
     (click)="select('1')">Get 250 UFC</a>
-  <a class="btn btn-outline-success" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" aria-controls="giveawayContact"
+  <a class="btn btn-success" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" aria-controls="giveawayContact"
     (click)="select('2')">Get 650 UFC</a>
-  <a class="btn btn-outline-danger" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" aria-controls="giveawayContact"
+  <a class="btn btn-danger" data-toggle="collapse" href="#giveawayContact" role="button" aria-expanded="false" aria-controls="giveawayContact"
     (click)="select('3')">Get 1150 UFC</a>
 </div>
 
@@ -35,17 +35,18 @@
                 <share-button [theme]="'material-dark'" [button]="'linkedin'" [showText]="true" [size]="3"></share-button> or
                 <share-button [theme]="'material-dark'" [button]="'twitter'" [showText]="true" [size]="3"></share-button>
               </div>
-              <div >
-                Follow me on <a href="https://www.instagram.com/dude_is_coder/" target="_blank">IG</a>
+              <div class="mt10">
+                Follow me on <a class="btn btn-warning btn-insta btn-shadow" href="https://www.instagram.com/dude_is_coder/" target="_blank">
+                  <i class="fab fa-instagram fa-lg"></i> Instagram</a>
               </div>
             </div>
           </div>
         </div>
         <div *ngIf="giveawayToken.giveaway_id === '2' || giveawayToken.giveaway_id === '3' ">
-          <div class="row">
+          <div class="row mt10">
             <div class="col-md-2"></div>
             <div class="col-md-9">
-              <a class="btn btn-outline-dark" data-toggle="collapse" href="#getMeCoffee" role="button"
+              <a class="btn btn-outline-dark btn-shadow" data-toggle="collapse" href="#getMeCoffee" role="button"
                aria-expanded="false" aria-controls="getMeCoffee">
                Get me a Coffee! <i class="fas fa-coffee"></i>
               </a>
@@ -54,22 +55,26 @@
               <div class="collapse" id="getMeCoffee">
                 <div class="card card-body">
                  <div class="row">
-                   <div class="col md-6">
-                     Paypal me 5cent
+                   <div class="col md-5">
+                    Paypal <a href='https://ko-fi.com/X8X0BTXO' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi5.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
                    </div>
+                   <div class="col md-1">or </div>
                    <div class="col md-6">
-                      or PayTm me Rs.8 at 9762907853
+                     <img src="../../../assets/images/paytm-qrcode.jpeg" class="img img-fluid" />
+                      PayTm me Rs.10 at 9762907853
                     </div>
                 </div>
+                <div class="mt10">
                 <span>This is not the price of UFC coin. This is the transaction fees I need 
                   to pay to transfer the coin to you. Below is the UFC coin price. </span>
               </div>
             </div>
+            </div>
           </div>
         </div>
+      </div>
 
-
-        <form>
+        <form class="mt10">
           <div class="form-group row">
             <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
             <div class="col-sm-9">

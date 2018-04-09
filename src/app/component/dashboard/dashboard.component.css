@@ -19,7 +19,8 @@
     padding: 8px 0 28px 30px;
     margin: 10px 0 0 8px;
     font-size: 15px;
-    border-left: 2px solid rgba(35,35,35,0.25);
+    border-left: 2px solid grey;
+    color: #cccccc;
 }
 
 .roadmap-title-content{
@@ -27,7 +28,6 @@
 }
 
 .roadmap-title{
-   // padding-left: 42px;
     font-size: 18px;
     cursor: pointer;
 }
@@ -35,7 +35,7 @@
 .roadmap-icon{
     color:#3bd3be;
     top: 3px;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 
@@ -45,4 +45,48 @@ margin: 15px 0;
 
 .member-content{
   margin : 10px;
+}
+
+.blockchainInfo{
+    background-color: #31353c;
+    color: white;
+}
+
+section{
+    padding:50px 10px; 
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+
+
+
+.blockchainFeatures, .section-transfer, .section-footer{
+    background-color: #2a2b30;
+    color: white;
+
+}
+
+.roadmap, .section-balanceof, .section-team{
+    background-color: rgb(49, 53, 60);
+    color: white;
+
+}
+
+
+.li-custom{
+    display: list-item;
+    margin: 10px;
+}
+.section-giveaway{
+    background-color: transparent;
+    background-image: linear-gradient(20deg, #00cdac 52%, #8bdad4 100%);
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+
+.team-icon{
+    color: #3bd3be;
+    font-size: 10px;
+}
+
+.about-me{
+    margin: 0 20px; 
 }

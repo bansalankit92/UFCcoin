@@ -41,8 +41,6 @@ angel investor
 
 http://demo.themovation.com/pursuit/home-ico-2/
 /*****/
-create balance of and transfer section
-create buy and sell section
 
 
 create giveaway section
@@ -59,12 +57,13 @@ do alignment
 
 how to install metamask
 
+current issues
+
 
 /******/
 
 
 send email from ui - create backend or check some ui
-share with fb twitter
 
 
 create paypal account
@@ -76,6 +75,7 @@ twitter id
 delete tweets
 add meta 
 
+faqs
 
 //done
 upload to firebase
@@ -85,7 +85,10 @@ create eth account and add cex private key eth
 publish coin 
 goole sheets to custom form integration
 
+create balance of and transfer section
+create buy and sell section
 
+share with fb twitter
 
 
 /***/

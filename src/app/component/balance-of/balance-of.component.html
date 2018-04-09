@@ -8,5 +8,6 @@
     </div>
   </div>
 </form>
-<div *ngIf="balance > 0"><span> You have {{balance/1000000000000000000}} UFC coins <i class="fa fa-smile-o"></i></span></div>
-<div *ngIf="balance < 0"><span>Get UFC coins </span></div>
+<div *ngIf="message" class="mt10"><span class="ptext">{{message}}</span></div>
+<div *ngIf="balance > 0" class="mt10"><span class="ptext"> You have {{balance/1000000000000000000}} UFC coins <i class="fa fa-smile-o"></i></span></div>
+<div *ngIf="balance < 0" class="mt10"><span class="ptext">Get UFC coins </span></div>
